@@ -1,0 +1,38 @@
+{
+  "name": "blueberry-highlighting",
+  "displayName": "Blueberry Highlighting",
+  "description": "Syntax highlighting for the Blueberry programming language.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "blueberry-highlighting",
+        "icon": {
+          "light": "./icons/BlueberryIcon.png",
+          "dark": "./icons/BlueBerryIcon.png"
+        },
+        "aliases": [
+          "Blueberry",
+          "blueberry"
+        ],
+        "extensions": [
+          ".bb"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "blueberry-highlighting",
+        "scopeName": "source.bb",
+        "path": "./syntaxes/blueberry.tmLanguage.json"
+      }
+    ]
+  }
+}

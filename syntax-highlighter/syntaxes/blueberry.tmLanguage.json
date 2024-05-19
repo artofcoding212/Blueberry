@@ -1,0 +1,108 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Blueberry",
+	"patterns": [
+		{"include": "#keywords"},
+		{"include": "#strings"}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.keywords",
+					"match": "\\b(function|return|if|else|do|while|for|static|public|private|readonly|constructor|new)\\b"
+				},
+				{
+					"name": "keyword.control.variable",
+					"match": "\\b(global|local)\\b"
+				},
+				{
+					"name": "keyword.control.classDeclaration",
+					"match": "\\b(class)\\b(\\s([a-zA-Z][a-zA-Z0-9]*))?",
+					"captures": {
+						"1": {"name": "keyword.control"},
+						"2": {"name": "support.class"}
+					}
+				},
+				{
+					"name": "keyword.control.scopeVariable",
+					"match": "\\b(var)\\b(:\\s([a-zA-Z][a-zA-Z0-9]*))?",
+					"captures": {
+						"1": {"name": "keyword.control"},
+						"2": {"name": "keyword.operator"},
+						"3": {"name": "support.type"}
+					}
+				},
+				{
+					"name": "constant.language",
+					"match": "\\b(true|false|none)\\b"
+				},
+				{
+					"name": "keyword.other.print",
+					"match": "\\b(print)\\b"
+				},
+				{
+					"name": "entity.name.function",
+					"match": "\\b([a-zA-Z]{1,}\\d*)\\("
+				},
+				{"include": "#identifiers"},
+				{"include": "#numbers"},
+				{"include": "#assignments"},
+				{"include": "#operators"},
+				{"include": "#lineComment"},
+				{"include": "#blockComment"}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator",
+					"match": "[\\/%+*-:=!<]|>=|<=|&&|\\|\\||!="
+				},
+				{
+					"name": "keyword.operator",
+					"match": "(?:\\s|^)>(?!>|!)"
+				}
+			]
+		},
+		"assignments": {
+			"name": "keyword.operator",
+			"match": "="
+		},
+		"identifiers": {
+			"name": "variable.name",
+			"match": "[a-zA-Z][a-zA-Z0-9]*"
+		},
+		"numbers": {
+			"name": "constant.numeric",
+			"match": "\\d{1,3}(_\\d{3})*(.\\d{1,})?"
+		},
+		"lineComment": {
+			"name": "comment.line.double-slash",
+			"match": "(>>.*$)",
+			"patterns": [
+				{
+					"name": "constant.numeric",
+					"match": "\\b(hello)\\b"
+				}
+			]
+		},
+		"blockComment": {
+			"name": "comment.line.double-slash",
+			"begin": ">!",
+			"end": "!<|\bSTOP\b"
+		},
+		"strings": {
+			"name": "string.quoted.double",
+			"begin": "\"|'",
+			"end": "\"|'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.blueberry",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.bb"
+}
